@@ -12,17 +12,6 @@
           <i v-if="hasSubmenu"
             :class="['pi pi-angle-down text-primary', { 'pi-angle-down ml-2': root, 'pi-angle-right ml-auto': !root }]"></i>
         </Button>
-        <!-- <a v-ripple :href="href" v-bind="props.action" @click="navigate">
-          <span :class="item.icon" />
-          <span class="ml-2">{{ item.label }}</span>
-
-          <Badge v-if="item.badge" :class="{ 'ml-auto': !root, 'ml-2': root }" :value="item.badge" />
-          <span v-if="item.shortcut" class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">{{
-            item.shortcut }}</span>
-          <i v-if="hasSubmenu"
-            :class="['pi pi-angle-down text-primary', { 'pi-angle-down ml-2': root, 'pi-angle-right ml-auto': !root }]"></i>
-        </a> -->
-
       </router-link>
       <a v-else v-ripple :href="item.route" v-bind="props.action" @click="navigate" target="_blank">
         <span :class="item.icon" />
@@ -47,8 +36,30 @@
 
     </template>
   </Menubar>
-  <div class="app-content">
+  <div class="app-content mb-15">
     <router-view />
+  </div>
+  <div class="footer mt-10">
+    <v-layout>
+      <v-footer color="#091a32" app>
+        <v-row justify=" center">
+          <v-col class="text-left mt-2" cols="12" md="6">
+            {{ new Date().getFullYear() }} — <strong>SHIELDS</strong>
+          </v-col>
+          <v-col class="text-right" cols="12" md="6">
+            <v-tooltip v-for="item in socials" :text="`Rejoignez nous sur ${item.name}`" location="top">
+              <template #activator="{ props }">
+                <v-btn v-bind="props" variant="text" class="mx-2" rounded="xl" fab icon small
+                  :color="'var(--primary-color)'" :href="item.url" target="_blank">
+                  <i :class="item.icon"></i>
+                </v-btn>
+              </template>
+            </v-tooltip>
+
+          </v-col>
+        </v-row>
+      </v-footer>
+    </v-layout>
   </div>
 </template>
 <script>
@@ -58,12 +69,7 @@ import {
 
 import Menubar from "primevue/menubar";
 import Badge from "primevue/badge";
-import Avatar from "primevue/avatar";
-import InputText from "primevue/inputtext";
 import Button from "primevue/button";
-import Image from "primevue/image";
-import Card from "primevue/card";
-import TieredMenu from "primevue/tieredmenu";
 import {
   useToast
 } from 'vue-toastification';
@@ -73,6 +79,26 @@ export default {
   name: "App",
   data() {
     return {
+      socials: [
+        {
+          id: 1,
+          name: "Instagram",
+          url: "https://www.instagram.com/dls_shields/",
+          icon: "pi pi-instagram",
+        },
+        {
+          id: 2,
+          name: "Twitter",
+          url: "https://twitter.com/shields_dls",
+          icon: "pi pi-twitter",
+        },
+        {
+          id: 3,
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/company/shields-dls",
+          icon: "pi pi-linkedin",
+        }
+      ],
       searchText: "",
       logo: require("@/assets/logo.png"),
 
@@ -85,7 +111,7 @@ export default {
         disabled: false
       },
       {
-        label: 'Boutiques',
+        label: 'Boutique',
         icon: 'pi pi-shopping-cart',
         route: '/shop',
         isRoute: true,
@@ -128,16 +154,39 @@ export default {
 
           disabled: false
         },
+        {
+          label: 'Les activités',
+          icon: 'pi pi-star',
+          route: '/members',
+          isRoute: true,
+
+          disabled: false
+        },
         ],
       },
       {
         label: 'TEAM DLS',
         icon: '',
-        route: '/teamdls',
+        route: '#',
         isRoute: true,
+        items: [
+          {
+            label: "Informations",
+            icon: 'pi pi-info-circle',
+            route: '/teamdls',
+            isRoute: true,
 
-        disabled: false
+            disabled: false
+          },
+          {
+            label: 'Les compétitions',
+            icon: 'pi pi-flag',
+            route: '/competitions',
+            isRoute: true,
+            disabled: false
 
+          },
+        ],
       },
       ],
     }
@@ -184,7 +233,7 @@ export default {
 
   components: {
     Button,
-
+    Badge,
     Menubar,
 
   },

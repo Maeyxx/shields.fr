@@ -1,29 +1,28 @@
 <template>
-  <div class="justify-content-center flex">
-    <img :src="logo" style="height: 150px;">
-  </div>
+  <div class="main-container">
 
-  <div class="flex justify-content-center mb-5">
-    <h1>BIENVENUE SUR SHIELDS</h1>
-  </div>
-
-  <div class="text-center d-flex">
-    <div class="mx-auto" style="width: 45em;">
-      <v-card color="transparent">
-        <v-card-text class="text-h7">
-          Association Étudiante de la filière Cybersécurité au sein du Pôle Sup de La Salle, notre mission est de
-          dynamiser le parcours académique des étudiants en offrant des activités liées à la cybersécurité, tout en
-          renforçant
-          la cohésion au sein des différentes promotions. Nous sommes fiers de soutenir l'équipe CTF Team DLS en assurant
-          le succès de ses compétitions et en facilitant l'organisation.
-        </v-card-text>
-      </v-card>
+    <div class="justify-content-center flex">
+      <img :src="logo" style="height: 150px;">
     </div>
-  </div>
 
+    <div class="flex justify-content-center mb-5">
+      <h1>BIENVENUE SUR SHIELDS</h1>
+    </div>
 
-
-  <div class="justify-center fadein animation-duration-500 mb-5 text-center">
+    <div class="text-center d-flex">
+      <div class="mx-auto" style="width: 45em;">
+        <v-card color="transparent">
+          <v-card-text class="description">
+            Association Étudiante de la filière Cybersécurité au sein du Pôle Sup de La Salle, notre mission est de
+            dynamiser le parcours académique des étudiants en offrant des activités liées à la cybersécurité, tout en
+            renforçant
+            la cohésion au sein des différentes promotions. Nous sommes fiers de soutenir l'équipe CTF Team DLS en
+            assurant
+            le succès de ses compétitions et en facilitant l'organisation.
+          </v-card-text>
+        </v-card>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -32,6 +31,20 @@
   cursor: pointer;
   transform: scale(1.02);
   transition: all 0.5s ease-in-out;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5em;
+}
+
+.description {
+  font-size: 1.1em !important;
+  font-weight: 400 !important;
+  line-height: 1.5em !important;
 }
 </style>
 

@@ -95,7 +95,7 @@ export default {
         {
           id: 3,
           name: "LinkedIn",
-          url: "https://www.linkedin.com/company/shields-dls",
+          url: "https://www.linkedin.com/in/shields-dls/",
           icon: "pi pi-linkedin",
         }
       ],
@@ -130,38 +130,39 @@ export default {
         icon: '',
         route: '#',
         isRoute: true,
-        items: [{
-          label: 'Les compétitions',
-          icon: 'pi pi-flag',
-          route: '/competitions',
-          isRoute: true,
-          disabled: false
+        items: [
+          //{
+          //   label: 'Les compétitions',
+          //   icon: 'pi pi-flag',
+          //   route: '/competitions',
+          //   isRoute: true,
+          //   disabled: false
 
-        },
-        {
-          label: 'Le bureau',
-          icon: 'pi pi-shield',
-          route: '/office',
-          isRoute: true,
+          // },
+          {
+            label: 'Le bureau',
+            icon: 'pi pi-shield',
+            route: '/office',
+            isRoute: true,
 
-          disabled: false
-        },
-        {
-          label: 'Les adhérents',
-          icon: 'pi pi-users',
-          route: '/members',
-          isRoute: true,
+            disabled: false
+          },
+          {
+            label: 'Les adhérents',
+            icon: 'pi pi-users',
+            route: '/members',
+            isRoute: true,
 
-          disabled: false
-        },
-        {
-          label: 'Les activités',
-          icon: 'pi pi-star',
-          route: '/members',
-          isRoute: true,
+            disabled: false
+          },
+          {
+            label: 'Les activités',
+            icon: 'pi pi-star',
+            route: '/members',
+            isRoute: true,
 
-          disabled: false
-        },
+            disabled: false
+          },
         ],
       },
       {

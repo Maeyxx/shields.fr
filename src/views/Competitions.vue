@@ -156,7 +156,7 @@ export default {
             },
 
             ],
-            logo: require("@/assets/logo.png"),
+            logo: require("@/assets/logo_dls.png"),
             shop_items: [{
                 id: 1,
                 title: "Pack 1",

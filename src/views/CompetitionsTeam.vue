@@ -5,7 +5,7 @@
         </div>
 
         <div class="flex justify-content-center mb-5">
-            <h1>Qu'est-ce que la team DLS ?</h1>
+            <h1>Qu'est-ce que la Team DLS ?</h1>
         </div>
 
         <div class="text-center d-flex">

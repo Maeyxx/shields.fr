@@ -45,6 +45,31 @@
 
                     </div>
                 </div>
+                <div class="flex justify-content-center flex-wrap">
+                    <div class="flex align-items-center justify-content-center font-bold  m-2">
+                        <v-dialog width="1200">
+                            <template v-slot:activator="{ props }">
+                                <a v-bind="props" class="p-button p-button-rounded font-bold no-underline p-button-outlined"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <font-awesome-icon icon="eye" class="mr-2" />
+                                    Voir le pack {{
+                                        item.title }}</a>
+                            </template>
+
+                            <template v-slot:default="{ isActive }">
+                                <v-card :title="`Pack ${item.title}`" color="#091a32">
+                                    <v-card-subtitle class="ml-2">Boutique </v-card-subtitle>
+                                    <v-card-text>
+                                        <v-img :src="item.src"></v-img>
+                                    </v-card-text>
+                                </v-card>
+                            </template>
+
+
+                        </v-dialog>
+
+                    </div>
+                </div>
             </template>
         </Card>
     </div>
@@ -97,7 +122,8 @@ export default {
 
                     ],
                     price: 15,
-                    link: "https://www.helloasso.com/associations/shields/boutiques/pack-de-base"
+                    link: "https://www.helloasso.com/associations/shields/boutiques/pack-de-base",
+                    src: require("@/assets/images/merch/merch_shields.png")
                 },
                 {
                     id: 2,
@@ -128,7 +154,9 @@ export default {
                         }
                     ],
                     price: 20,
-                    link: "https://www.helloasso.com/associations/shields/boutiques/pack-etendue"
+                    link: "https://www.helloasso.com/associations/shields/boutiques/pack-etendue",
+                    src: require("@/assets/images/merch/merch_shields_jt.png")
+
 
                 },
                 // {

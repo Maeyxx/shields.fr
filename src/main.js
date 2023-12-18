@@ -42,7 +42,6 @@ const vuetify = createVuetify({
     directives,
 })
 
-
 const app = createApp(App);
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(PrimeVue);

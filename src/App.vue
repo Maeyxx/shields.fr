@@ -42,19 +42,35 @@
   <div class="footer mt-10">
     <v-layout>
       <v-footer color="#091a32" app>
-        <v-row justify=" center">
+        <v-row justify="center">
           <v-col class="text-left mt-2" cols="12" md="6">
             {{ new Date().getFullYear() }} — <strong>SHIELDS</strong>
           </v-col>
           <v-col class="text-right" cols="12" md="6">
-            <v-tooltip v-for="item in socials" :text="`Rejoignez nous sur ${item.name}`" location="top">
-              <template #activator="{ props }">
-                <v-btn v-bind="props" variant="text" class="mx-2" rounded="xl" fab icon small
-                  :color="'var(--primary-color)'" :href="item.url" target="_blank">
-                  <i :class="item.icon"></i>
-                </v-btn>
-              </template>
-            </v-tooltip>
+            <v-row>
+              <v-col cols="12" md="12"><v-tooltip v-for="item in socials" :text="`Rejoignez SHIELDS sur ${item.name}`"
+                  location="top">
+                  <template #activator="{ props }">
+                    <v-btn v-bind="props" variant="text" class="mx-2" rounded="xl" fab icon small
+                      :color="'var(--primary-color)'" :href="item.url" target="_blank">
+                      <i :class="item.icon"></i>
+                    </v-btn>
+                  </template>
+                </v-tooltip>
+              </v-col>
+              <!-- <v-col cols="12" md="12" class="mt-n8">
+
+                <v-tooltip v-for="item in socialsDLS" :text="`Rejoignez la Team DLS sur ${item.name}`" location="top">
+                  <template #activator="{ props }">
+                    <v-btn v-bind="props" variant="text" class="mx-2" rounded="xl" fab icon small
+                      :color="'var(--primary-color)'" :href="item.url" target="_blank">
+                      <i :class="item.icon"></i>
+                    </v-btn>
+                  </template>
+                </v-tooltip>
+              </v-col> -->
+            </v-row>
+
 
           </v-col>
         </v-row>
@@ -63,6 +79,8 @@
   </div>
 </template>
 <script>
+import Snowf from 'vue-snowf';
+
 import {
   ref
 } from "vue";
@@ -96,6 +114,26 @@ export default {
           id: 3,
           name: "LinkedIn",
           url: "https://www.linkedin.com/in/shields-dls/",
+          icon: "pi pi-linkedin",
+        }
+      ],
+      socialsDLS: [
+        {
+          id: 1,
+          name: "Instagram",
+          url: "https://www.instagram.com/dls_shields/",
+          icon: "pi pi-instagram",
+        },
+        {
+          id: 2,
+          name: "Twitter",
+          url: "https://twitter.com/TeamDLS_",
+          icon: "pi pi-twitter",
+        },
+        {
+          id: 3,
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/team-dls/",
           icon: "pi pi-linkedin",
         }
       ],
@@ -236,7 +274,7 @@ export default {
     Button,
     Badge,
     Menubar,
-
+    Snowf,
   },
 };
 </script>

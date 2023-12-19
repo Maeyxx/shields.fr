@@ -3,75 +3,81 @@
         <img :src="logo" style="height: 150px;">
     </div>
 
+    <v-row class="text-center justify-center align-center" style="max-width: 60em; margin: auto;">
+        <v-col cols="12" md="6" v-for="item in shop_items">
+            <Card>
+                <template #title class=" flex bg-primary">
+                    <div class="flex justify-content-center flex-wrap">
+                        <div class="flex align-items-center justify-content-center font-bold  m-2">
+                            Pack "{{ item.title }}"
+                        </div>
+                    </div>
+                </template>
+                <template #subtitle>
+                    <div class="flex justify-content-center flex-wrap">
+                        <div class="flex align-items-center justify-content-center font-bold">
+                            {{ item.price }}€
+                        </div>
+                    </div>
+                </template>
+                <template #content>
+                    <div class="flex justify-content-center flex-wrap justify-center text-left">
+                        <div class=" align-items-center justify-content-center font-bold">
+                            <ul class="li-card" v-for="goodie in item.goodies" :style="'list-style-type: none !important'">
+                                <li>
+                                    <i v-if="goodie.included === true" class="pi pi-check text-teal-600 mr-2"
+                                        style="color: 'var(--primary-color)'"></i>
+                                    <i v-else class="pi pi-times text-red-600 mr-2"
+                                        style="color: 'var(--primary-color)'"></i>
+
+                                    {{ goodie.name }}
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </template>
+                <template #footer class="flex justify-content-center flex-wrap">
+                    <div class="flex justify-content-center flex-wrap">
+                        <div class="flex align-items-center justify-content-center font-bold  m-2">
+                            <a :href="item.link" class="p-button p-button-rounded font-bold no-underline" target="_blank"
+                                rel="noopener noreferrer">Je
+                                choisis le pack {{
+                                    item.title }}</a>
+
+                        </div>
+                    </div>
+                    <div class="flex justify-content-center flex-wrap">
+                        <div class="flex align-items-center justify-content-center font-bold  m-2">
+                            <v-dialog width="1200">
+                                <template v-slot:activator="{ props }">
+                                    <a v-bind="props"
+                                        class="p-button p-button-rounded font-bold no-underline p-button-outlined"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <font-awesome-icon icon="eye" class="mr-2" />
+                                        Voir le pack {{
+                                            item.title }}</a>
+                                </template>
+
+                                <template v-slot:default="{ isActive }">
+                                    <v-card :title="`Pack ${item.title}`" color="#091a32">
+                                        <v-card-subtitle class="ml-2">Boutique </v-card-subtitle>
+                                        <v-card-text>
+                                            <v-img :src="item.src"></v-img>
+                                        </v-card-text>
+                                    </v-card>
+                                </template>
+
+
+                            </v-dialog>
+
+                        </div>
+                    </div>
+                </template>
+            </Card>
+        </v-col>
+    </v-row>
     <div class="flex justify-content-center fadein animation-duration-500 mb-5 mx-10">
-        <Card class="mr-5 d-flex flex-column" style="width: 25em;" v-for="item in shop_items">
-            <template #title class=" flex bg-primary">
-                <div class="flex justify-content-center flex-wrap">
-                    <div class="flex align-items-center justify-content-center font-bold  m-2">
-                        Pack "{{ item.title }}"
-                    </div>
-                </div>
-            </template>
-            <template #subtitle>
-                <div class="flex justify-content-center flex-wrap">
-                    <div class="flex align-items-center justify-content-center font-bold">
-                        {{ item.price }}€
-                    </div>
-                </div>
-            </template>
-            <template #content>
-                <div class="flex justify-content-center flex-wrap">
-                    <div class=" align-items-center justify-content-center font-bold  ">
-                        <ul class="li-card" v-for="goodie in item.goodies" :style="'list-style-type: none !important'">
-                            <li>
-                                <i v-if="goodie.included === true" class="pi pi-check text-teal-600 mr-2"
-                                    style="color: 'var(--primary-color)'"></i>
-                                <i v-else class="pi pi-times text-red-600 mr-2" style="color: 'var(--primary-color)'"></i>
-
-                                {{ goodie.name }}
-
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </template>
-            <template #footer class="flex justify-content-center flex-wrap">
-                <div class="flex justify-content-center flex-wrap">
-                    <div class="flex align-items-center justify-content-center font-bold  m-2">
-                        <a :href="item.link" class="p-button p-button-rounded font-bold no-underline" target="_blank"
-                            rel="noopener noreferrer">Je
-                            choisis le pack {{
-                                item.title }}</a>
-
-                    </div>
-                </div>
-                <div class="flex justify-content-center flex-wrap">
-                    <div class="flex align-items-center justify-content-center font-bold  m-2">
-                        <v-dialog width="1200">
-                            <template v-slot:activator="{ props }">
-                                <a v-bind="props" class="p-button p-button-rounded font-bold no-underline p-button-outlined"
-                                    target="_blank" rel="noopener noreferrer">
-                                    <font-awesome-icon icon="eye" class="mr-2" />
-                                    Voir le pack {{
-                                        item.title }}</a>
-                            </template>
-
-                            <template v-slot:default="{ isActive }">
-                                <v-card :title="`Pack ${item.title}`" color="#091a32">
-                                    <v-card-subtitle class="ml-2">Boutique </v-card-subtitle>
-                                    <v-card-text>
-                                        <v-img :src="item.src"></v-img>
-                                    </v-card-text>
-                                </v-card>
-                            </template>
-
-
-                        </v-dialog>
-
-                    </div>
-                </div>
-            </template>
-        </Card>
     </div>
 </template>
   
@@ -159,34 +165,8 @@ export default {
 
 
                 },
-                // {
-                //     id: 3,
-                //     title: "Pack 3",
-                //     description: "Bénéficiez d'un plusieurs goodies de l'association shields grâce à ce pack",
-                //     goodies: [
-                //         "Stickers",
-                //         "Mug",
-                //         "Sweat",
-                //         "t-shirt"
-                //     ],
-                //     price: 70,
-                // }
             ]
         };
-    },
-    methods: {
-        bizi() {
-            this.$confetti.start({
-                particles: [
-                    {
-                        type: 'image',
-                        url: require('@/assets/bizi.png'),
-                        size: 64,
-                    },
-
-                ],
-            });
-        },
     },
     components: {
         Button,

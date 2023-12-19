@@ -2,12 +2,11 @@
     <div class="justify-content-center flex">
         <img :src="logo" style="height: 150px;">
     </div>
-
     <div class="justify-center fadein animation-duration-500 mb-5">
         <v-row class="text-center">
             <v-col cols="12" md="12">Les compétitions auquels nous participons</v-col>
         </v-row>
-        <v-row class="mx-15 justify-center">
+        <v-row class="mx-15">
             <v-col v-for="competition in competitions" cols="12" md="4" sm="6" class="d-flex">
 
                 <v-dialog width="600">
@@ -16,9 +15,10 @@
                             rounded="xl">
                             <v-row class="mt-1 ml-1 mr-1">
                                 <v-col cols="12" md="6" class="text-left">{{ competition.title }}</v-col>
-                                <v-col cols="12" md="6" class="text-right"><v-chip v-if="competition.isFinished"
-                                        small>Compétition
-                                        terminée</v-chip> <v-chip v-else small>{{ competition.datetime }}</v-chip></v-col>
+                                <v-col cols="12" md="6" class="text-right">
+                                    <v-chip v-if="competition.isFinished" small color="#e85a1d">Compétition
+                                        terminée</v-chip>
+                                    <v-chip v-else small>{{ competition.datetimeDisplay }}</v-chip></v-col>
                             </v-row>
 
                             <v-card-subtitle>
@@ -34,8 +34,8 @@
 
                     <template v-slot:default="{ isActive }">
                         <v-card :title="competition.title" height="300" color="#091a32">
-                            <v-card-subtitle>Participants à la compétition</v-card-subtitle>
-                            <v-card-text>
+                            <v-card-subtitle class="ml-2">Participants à la compétition</v-card-subtitle>
+                            <v-card-text v-if="competition.members.length > 0">
                                 <v-row class="mx-15 justify-center">
                                     <v-col v-for="member in competition.members" cols="12" md="5">
                                         <v-card color="" min-width="100">
@@ -45,6 +45,9 @@
 
                                 </v-row>
 
+                            </v-card-text>
+                            <v-card-text v-else class="text-center">
+                                Aucun participant(s) pour le moment
                             </v-card-text>
                         </v-card>
                     </template>
@@ -85,21 +88,33 @@ import moment from "moment";
 moment.locale("fr");
 
 export default {
-    name: "HomeView",
+    name: "CompetitionsView",
 
     data() {
         return {
             competitions: [
-
                 {
                     id: 2,
+                    title: "HACKLANTIQUE",
+                    logo: require("@/assets/images/competitions/hacklantique.jpg"),
+                    year: 2024,
+                    members: [],
+                    description: "CTF Jeorpardy de niveau débutant à intermédiaire, à visée pédagogique | Organisé par 8 étudiants d'IMT Atlantique.",
+                    isFinished: false,
+                    datetime: "2024-03-09",
+                    datetimeDisplay: moment("2024-03-09 00:00:00").fromNow()
+                },
+
+                {
+                    id: 3,
                     title: "BREIZHCTF",
                     logo: require("@/assets/images/competitions/breizhctf.png"),
                     year: 2024,
                     members: [],
                     description: "Le BreizhCTF est une compétition de sécurité informatique de type CTF (Capture the flag). 12h de challenge pendant la nuit de vendredi à samedi ! C’est ce qui attend les 600 participants de l’édition 2024. Cet événement est ouvert à tous, professionnels, étudiants, passionnés ou curieux de sécurité informatique.",
                     isFinished: false,
-                    datetime: moment("2024-04-01 00:00:00").fromNow()
+                    datetime: "2024-04-01",
+                    datetimeDisplay: moment("2024-04-01 00:00:00").fromNow()
                 },
                 {
                     id: 1,
@@ -134,7 +149,8 @@ export default {
                     },
                     ],
                     isFinished: false,
-                    datetime: moment("2023-12-02 08:00:00").fromNow()
+                    datetime: "2023-12-02",
+                    datetimeDisplay: moment("2023-12-02 08:00:00").fromNow()
                 },
                 {
                     id: 3,
@@ -144,76 +160,25 @@ export default {
                     members: [],
                     description: "L'ECW est une compétition de cybersécurité ayant lieu à Rennes. Cette compétition compte plusieurs challenges de sécurité informatique, de cryptographie, de stéganographie, de reverse engineering, de web, de forensics, de programmation, de réseau. Cette compétition est ouverte à tous, professionnels, étudiants",
                     isFinished: true,
-                    datetime: moment("2023-11-22 08:00:00").fromNow()
+                    datetime: "2023-11-22",
+                    datetimeDisplay: moment("2023-11-22 08:00:00").fromNow()
 
 
                 }
             ],
-            responsiveOptions: [{
-                breakpoint: '600px',
-                numVisible: 1,
-                numScroll: 1
-            },
-
-            ],
             logo: require("@/assets/logo_dls.png"),
-            shop_items: [{
-                id: 1,
-                title: "Pack 1",
-                description: "Bénéficiez d'un plusieurs goodies de l'association shields grâce à ce pack",
-                goodies: [
-                    "Stickers",
-                    "Mug",
-                ],
-                price: 10
-            },
-            {
-                id: 2,
-                title: "Pack 2",
-                description: "Bénéficiez d'un plusieurs goodies de l'association shields grâce à ce pack",
-                goodies: [
-                    "Stickers",
-                    "Mug",
-                    "T-shirt"
-                ],
-                price: 50
-
-            },
-            {
-                id: 3,
-                title: "Pack 3",
-                description: "Bénéficiez d'un plusieurs goodies de l'association shields grâce à ce pack",
-                goodies: [
-                    "Stickers",
-                    "Mug",
-                    "Sweat",
-                    "t-shirt"
-                ],
-                price: 70,
-            }
-            ]
         };
     },
-    methods: {
-        showSuccess() {
-            toast.add({
-                severity: 'success',
-                summary: 'Success Message',
-                detail: 'Order submitted',
-                life: 3000
-            });
-        },
-        bizi() {
-            this.$confetti.start({
-                particles: [{
-                    type: 'image',
-                    url: require('@/assets/bizi.png'),
-                    size: 64,
-                },
-
-                ],
-            });
-        },
+    created() {
+        let currentDateTime = moment();
+        this.competitions.forEach(competition => {
+            if (moment(competition.datetime).isBefore(currentDateTime)) {
+                competition.isFinished = true;
+            }
+            else {
+                competition.isFinished = false;
+            }
+        })
     },
 
 };

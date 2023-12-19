@@ -1,12 +1,12 @@
 <template>
-    <div class="text-center my-10 fadein animation-duration-500">
+    <div class="text-center fadein animation-duration-500">
         <v-card color="transparent">
-            <v-card-title>Bureau de l'association SHIELDS pour {{ currentYear }}</v-card-title>
+            <v-card-title>Bureau de l'association SHIELDS pour l'année {{ currentYear }}</v-card-title>
         </v-card>
     </div>
 
-    <div class="fadein animation-duration-500 mb-15 d-flex justify-center align-center">
-        <v-row class="mx-15 text-center" style="width: 20em;">
+    <div class="fadein animation-duration-500 d-flex justify-center align-center">
+        <v-row class="mx-15 text-center" style="max-width: 40em;">
             <v-col v-for="(member, index) in members" :key="index" :cols="12" :md="6">
                 <v-card height="100" color="#091a32">
                     <v-card-title class="text-center">{{ member.pseudo }}</v-card-title>
@@ -59,9 +59,5 @@ export default {
 
         };
     },
-    methods: {
-
-    },
-
 };
 </script>

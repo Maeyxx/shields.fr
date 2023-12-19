@@ -41,12 +41,12 @@
   </div>
   <div class="footer mt-10">
     <v-layout>
-      <v-footer color="#091a32" app>
+      <v-footer color="#091a32" absolute>
         <v-row justify="center">
-          <v-col class="text-left mt-2" cols="12" md="6">
+          <v-col class="text-left mt-2" cols="12" md="6" sm="6" lg="6" xs="6">
             {{ new Date().getFullYear() }} — <strong>SHIELDS</strong>
           </v-col>
-          <v-col class="text-right" cols="12" md="6">
+          <v-col class="text-right" cols="12" md="6" sm="6" lg="6" xs="6">
             <v-row>
               <v-col cols="12" md="12"><v-tooltip v-for="item in socials" :text="`Rejoignez SHIELDS sur ${item.name}`"
                   location="top">
@@ -58,17 +58,6 @@
                   </template>
                 </v-tooltip>
               </v-col>
-              <!-- <v-col cols="12" md="12" class="mt-n8">
-
-                <v-tooltip v-for="item in socialsDLS" :text="`Rejoignez la Team DLS sur ${item.name}`" location="top">
-                  <template #activator="{ props }">
-                    <v-btn v-bind="props" variant="text" class="mx-2" rounded="xl" fab icon small
-                      :color="'var(--primary-color)'" :href="item.url" target="_blank">
-                      <i :class="item.icon"></i>
-                    </v-btn>
-                  </template>
-                </v-tooltip>
-              </v-col> -->
             </v-row>
 
 
@@ -85,6 +74,7 @@ import {
   ref
 } from "vue";
 
+import { useTheme } from 'vuetify'
 import Menubar from "primevue/menubar";
 import Badge from "primevue/badge";
 import Button from "primevue/button";
@@ -95,6 +85,14 @@ const toast = useToast();
 
 export default {
   name: "App",
+  setup() {
+
+    const theme = useTheme()
+
+    function toggleTheme() {
+      theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+    }
+  },
   data() {
     return {
       socials: [
@@ -196,7 +194,7 @@ export default {
           {
             label: 'Les activités',
             icon: 'pi pi-star',
-            route: '/members',
+            route: '/activities',
             isRoute: true,
 
             disabled: false
@@ -293,8 +291,15 @@ export default {
 .app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh !important;
   position: relative;
+
+  .app-content {
+    flex-grow: 1;
+    /* Ajouté pour occuper tout l'espace disponible */
+  }
+
+
 }
 
 .app-menubar {
@@ -306,11 +311,39 @@ export default {
 }
 
 .app-content {
-  padding-top: 90px;
-  /* Ajustez cette valeur en fonction de la hauteur de votre barre de menu */
+  height: 100% !important;
+  margin-top: 100px;
+  /* Modifiez la marge supérieure pour qu'elle corresponde à la hauteur de la barre de menu */
+  padding: 0 1em;
+  /* Ajouté pour que le contenu ne soit pas collé au bord de la page */
+  padding-bottom: 100px;
+
+  flex-grow: 1;
+  overflow: auto;
+  /* Ajoute une barre de défilement si nécessaire */
+
+  /* Permet au contenu de croître et de remplir l'espace */
+  min-height: calc(100vh - 100px);
+  /* Ajustez 100px pour la hauteur combinée de l'en-tête et du footer */
+
 }
+
 
 .p-menubar-end {
   display: contents
+}
+
+::-webkit-scrollbar {
+  width: 10px
+}
+
+::-webkit-scrollbar-track {
+  background: #585B5D;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
 }
 </style>

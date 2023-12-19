@@ -8,7 +8,7 @@
 
     <div class="fadein animation-duration-500 mb-15">
         <v-row class="mx-15 justify-center">
-            <v-col v-for="member in members" cols="12" md="2" sm="12">
+            <v-col v-for="member in members" cols="12" md="2" sm="4" lg="2" xs="4">
                 <v-card max-width="400" height="100" color="#091a32" rounded="xl">
                     <v-card-title class="text-center">{{ member.pseudo }}</v-card-title>
                 </v-card>
@@ -229,72 +229,11 @@ export default {
                 "avatarUrl": ""
             }
             ],
-            responsiveOptions: [{
-                breakpoint: '600px',
-                numVisible: 1,
-                numScroll: 1
-            },
-
-            ],
             logo: require("@/assets/logo.png"),
-            shop_items: [{
-                id: 1,
-                title: "Pack 1",
-                description: "Bénéficiez d'un plusieurs goodies de l'association shields grâce à ce pack",
-                goodies: [
-                    "Stickers",
-                    "Mug",
-                ],
-                price: 10
-            },
-            {
-                id: 2,
-                title: "Pack 2",
-                description: "Bénéficiez d'un plusieurs goodies de l'association shields grâce à ce pack",
-                goodies: [
-                    "Stickers",
-                    "Mug",
-                    "T-shirt"
-                ],
-                price: 50
 
-            },
-            {
-                id: 3,
-                title: "Pack 3",
-                description: "Bénéficiez d'un plusieurs goodies de l'association shields grâce à ce pack",
-                goodies: [
-                    "Stickers",
-                    "Mug",
-                    "Sweat",
-                    "t-shirt"
-                ],
-                price: 70,
-            }
-            ]
         };
     },
-    methods: {
-        showSuccess() {
-            toast.add({
-                severity: 'success',
-                summary: 'Success Message',
-                detail: 'Order submitted',
-                life: 3000
-            });
-        },
-        bizi() {
-            this.$confetti.start({
-                particles: [{
-                    type: 'image',
-                    url: require('@/assets/bizi.png'),
-                    size: 64,
-                },
 
-                ],
-            });
-        },
-    },
     components: {
         Button,
         Image,

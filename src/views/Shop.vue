@@ -4,7 +4,7 @@
     </div>
 
     <v-row class="text-center justify-center align-center" style="max-width: 60em; margin: auto;">
-        <v-col cols="12" md="6" v-for="item in shop_items">
+        <v-col cols="12" md="4" v-for="item in shop_items">
             <Card>
                 <template #title class=" flex bg-primary">
                     <div class="flex justify-content-center flex-wrap">
@@ -63,7 +63,7 @@
                                     <v-card :title="`Pack ${item.title}`" color="#091a32">
                                         <v-card-subtitle class="ml-2">Boutique </v-card-subtitle>
                                         <v-card-text>
-                                            <v-img :src="item.src"></v-img>
+                                            <v-img :src="item.src" max-height="400"></v-img>
                                         </v-card-text>
                                     </v-card>
                                 </template>
@@ -100,6 +100,38 @@ export default {
             shop_items: [
                 {
                     id: 1,
+                    title: "Jet-tag seul",
+                    description: "Bénéficiez d'un plusieurs goodies de l'association shields grâce à ce pack",
+                    goodies: [
+                        {
+                            id: 1,
+                            name: "Stickers",
+                            included: false
+
+                        },
+                        {
+                            id: 2,
+                            name: "Mug",
+                            included: false
+
+                        },
+                        {
+                            id: 3,
+                            name: "T-shirt",
+                            included: false
+                        },
+                        {
+                            id: 4,
+                            name: "Jet Tag",
+                            included: true
+                        }
+                    ],
+                    price: 10,
+                    link: "https://www.helloasso.com/associations/shields/boutiques/jet-tag-shields",
+                    src: require("@/assets/images/merch/jet-tag_shields.png")
+                },
+                {
+                    id: 2,
                     title: "Base",
                     description: "Bénéficiez d'un plusieurs goodies de l'association shields grâce à ce pack",
                     goodies: [
@@ -132,7 +164,7 @@ export default {
                     src: require("@/assets/images/merch/merch_shields.png")
                 },
                 {
-                    id: 2,
+                    id: 3,
                     title: "Étendu",
                     description: "Bénéficiez d'un plusieurs goodies de l'association shields grâce à ce pack",
                     goodies: [
@@ -165,6 +197,7 @@ export default {
 
 
                 },
+
             ]
         };
     },

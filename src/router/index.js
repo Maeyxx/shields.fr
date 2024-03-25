@@ -9,6 +9,7 @@ import OfficeMembers from "../views/OfficeMembers.vue"
 import Competitions from "../views/Competitions.vue"
 import CompetitionsTeam from "../views/CompetitionsTeam.vue"
 import Activities from "../views/Activities.vue"
+import Legal from "../views/Legal.vue"
 
 
 const routes = [{
@@ -48,6 +49,11 @@ const routes = [{
     component: Shop,
   },
 
+  {
+    path: "/legal",
+    name: "legal",
+    component: Legal,
+  },
 ];
 
 const router = createRouter({

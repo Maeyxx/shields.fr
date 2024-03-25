@@ -36,20 +36,23 @@
 
     </template>
   </Menubar>
-  <div class="app-content mb-15">
+  <div class="app-content ">
     <router-view />
   </div>
-  <div class="footer mt-10">
+  <div class="footer">
     <v-layout>
       <v-footer color="#091a32" absolute>
         <v-row justify="center">
           <v-col class="text-left mt-2" cols="12" md="6" sm="6" lg="6" xs="6">
             {{ new Date().getFullYear() }} — <strong>SHIELDS</strong>
+            <v-btn text   class="ml-2" small rounded variant="text" href="/#/legal" >
+              Mentions légales
+              </v-btn>
           </v-col>
           <v-col class="text-right" cols="12" md="6" sm="6" lg="6" xs="6">
             <v-row>
-              <v-col cols="12" md="12"><v-tooltip v-for="item in socials" :text="`Rejoignez SHIELDS sur ${item.name}`"
-                  location="top">
+              <v-col cols="12" md="12" class="text-right justify-end">
+                <v-tooltip v-for="item in socials" :text="`Rejoignez SHIELDS sur ${item.name}`" location="top">
                   <template #activator="{ props }">
                     <v-btn v-bind="props" variant="text" class="mx-2" rounded="xl" fab icon small
                       :color="'var(--primary-color)'" :href="item.url" target="_blank">
@@ -57,7 +60,16 @@
                     </v-btn>
                   </template>
                 </v-tooltip>
+                <v-tooltip v-for="item in socialsDLS" :text="`Rejoignez la Team DLS sur ${item.name}`" location="top">
+                  <template #activator="{ props }">
+                    <v-btn v-bind="props" variant="text" class="mx-2" rounded="xl" fab icon small color="white"
+                      :href="item.url" target="_blank">
+                      <i :class="item.icon"></i>
+                    </v-btn>
+                  </template>
+                </v-tooltip>
               </v-col>
+
             </v-row>
 
 
@@ -116,20 +128,20 @@ export default {
         }
       ],
       socialsDLS: [
+        // {
+        //   id: 1,
+        //   name: "Instagram",
+        //   url: "https://www.instagram.com/dls_shields/",
+        //   icon: "pi pi-instagram",
+        // },
         {
           id: 1,
-          name: "Instagram",
-          url: "https://www.instagram.com/dls_shields/",
-          icon: "pi pi-instagram",
-        },
-        {
-          id: 2,
           name: "Twitter",
           url: "https://twitter.com/TeamDLS_",
           icon: "pi pi-twitter",
         },
         {
-          id: 3,
+          id: 2,
           name: "LinkedIn",
           url: "https://www.linkedin.com/in/team-dls/",
           icon: "pi pi-linkedin",
@@ -312,9 +324,9 @@ export default {
 
 .app-content {
   height: 100% !important;
-  margin-top: 100px;
+  margin-top: 20px;
   /* Modifiez la marge supérieure pour qu'elle corresponde à la hauteur de la barre de menu */
-  padding: 0 1em;
+  padding: 0 5em;
   /* Ajouté pour que le contenu ne soit pas collé au bord de la page */
   padding-bottom: 100px;
 
@@ -345,5 +357,12 @@ export default {
 ::-webkit-scrollbar-thumb {
   background: var(--primary-color);
   border-radius: 10px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
 }
 </style>

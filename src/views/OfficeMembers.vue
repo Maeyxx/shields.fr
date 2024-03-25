@@ -1,4 +1,5 @@
 <template>
+     <div class="main-container">
     <div class="text-center fadein animation-duration-500">
         <v-card color="transparent">
             <v-card-title>Bureau de l'association SHIELDS pour l'année {{ currentYear }}</v-card-title>
@@ -15,6 +16,7 @@
             </v-col>
         </v-row>
     </div>
+</div>
 </template>
 
 <script>

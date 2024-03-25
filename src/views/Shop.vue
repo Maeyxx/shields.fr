@@ -1,9 +1,11 @@
 <template>
+        <div class="main-container">
+
     <div class="justify-content-center flex">
         <img :src="logo" style="height: 150px;">
     </div>
 
-    <v-row class="text-center justify-center align-center" style="max-width: 60em; margin: auto;">
+    <v-row class="text-center justify-center align-center w-full mt-5" >
         <v-col cols="12" md="4" v-for="item in shop_items">
             <Card>
                 <template #title class=" flex bg-primary">
@@ -78,6 +80,7 @@
         </v-col>
     </v-row>
     <div class="flex justify-content-center fadein animation-duration-500 mb-5 mx-10">
+    </div>
     </div>
 </template>
   

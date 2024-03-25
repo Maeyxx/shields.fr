@@ -1,4 +1,5 @@
 <template>
+    
     <div class="main-container">
         <div class="justify-content-center flex fadein animation-duration-500">
             <img :src="logo" style="height: 150px;">

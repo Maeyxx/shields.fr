@@ -133,7 +133,7 @@ export default {
 
                 {
                     id: 1,
-                    title: "LASER GAME (2022)",
+                    title: "LASER GAME",
                     logo: require("@/assets/images/activities/LASERGAME_2022/1.png"),
                     year: 2023,
                     description: "Soccer",
@@ -226,6 +226,25 @@ export default {
                     datetimeDisplay: moment("2023-12-20 15:00:00").format("dddd Do MMMM YYYY"),
                     datetimeFormat: moment("2023-12-20 15:00:00").fromNow(),
                     images: [
+                    ]
+                },
+
+                {
+                    id: 1,
+                    title: "LASER GAME",
+                    logo: require("@/assets/images/activities/LASERGAME_2023/1.jpg"),
+                    year: 2023,
+                    description: "Soccer",
+                    isFinished: false,
+                    datetime: "2023-11-30",
+                    datetimeDisplay: moment("2023-11-30 00:00:00").format("dddd Do MMMM YYYY"),
+                    datetimeFormat: moment("2023-11-30 00:00:00").fromNow(),
+                    images: [
+                        {
+                            id: 1,
+                            src: require("@/assets/images/activities/LASERGAME_2023/1.jpg"),
+                        },
+
                     ]
                 },
 
